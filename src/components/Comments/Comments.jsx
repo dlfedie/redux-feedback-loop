@@ -30,7 +30,7 @@ class Comments extends Component {
         //clear local state
         this.setState({ coments: '' })
 
-        //then move to page 3: supported
+        //then move to page 5: review
         this.props.history.push('/review')
     }
 

@@ -34,7 +34,7 @@ class Supported extends Component {
         //clear local state
         this.setState({ supported: '' })
 
-        //then move to page 3: supported
+        //then move to page 4: comments
         this.props.history.push('/comments')
     }
 
@@ -45,7 +45,7 @@ class Supported extends Component {
                 <h2>How well are you being supported?</h2>
                 {JSON.stringify(this.state)}
                 <form onSubmit={this.setSupport}>
-                    <select name="understanding" value={this.state.supported} onChange={this.handleChange}>
+                    <select name="supported" value={this.state.supported} onChange={this.handleChange}>
                         <option value="5">5 - It's award show thank you speech time!</option>
                         <option value="4">4 - Pretty well supported!</option>
                         <option value="3">3 - Alright</option>
