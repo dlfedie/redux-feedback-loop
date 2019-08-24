@@ -40,7 +40,7 @@ class Comments extends Component {
         return (
             <>
                 <h2>Any comments you would like to leave?</h2>
-                {JSON.stringify(this.state)}
+                {/* {JSON.stringify(this.state)} */}
                 <form onSubmit={this.setComments}>
                     <textarea value={this.state.comments} onChange={this.handleChange} rows="5" cols="60"/>
                     <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>

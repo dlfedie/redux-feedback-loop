@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import Form from '../Form/Form';
 
 class Feeling extends Component {
     //this component will ask how the user is feeling today, 5 is best, 1 is bad.
     //i will start with a select box and see how that works. may style differently in Material
 
     //let's set local state to store selection
-    state ={
-        feeling: '3'
+    state = {
+        feeling: '3',
+        optionTexts: {
+            name: 'feeling',
+            option5Text: '5 - Great!',
+            option4Text: '4 - Pretty good',
+            option3Text: '3 - Alright',
+            option2Text: `2 - I've been better`,
+            option1Text: '1 - Not good',
+            tagLine: 'Please choose a number, with 5 being "Great!" and 1 being "Not good".'
+        }
     }
 
     handleChange = (event) => {
@@ -46,8 +56,15 @@ class Feeling extends Component {
         return (
             <>
                 <h2>How are you feeling today?</h2>
-                {JSON.stringify(this.state)}
-                <form onSubmit={this.setFeeling}>
+                {/* {JSON.stringify(this.state)} */}
+
+                <Form 
+                question={this.state.feeling} 
+                setQuestion={this.setFeeling} 
+                handleChange={this.handleChange} 
+                optionTexts={this.state.optionTexts}
+                />
+                {/* <form onSubmit={this.setFeeling}>
                     <select name="feeling" value={this.state.feeling} onChange={this.handleChange}>
                         <option value="5">5 - Great!</option>
                         <option value="4">4 - Pretty good</option>
@@ -57,7 +74,7 @@ class Feeling extends Component {
                     </select>
                     <p>Please choose a number, with 5 being "Great!" and 1 being "Not good".</p>
                     <button type="submit">Next</button>
-                </form>
+                </form> */}
             </>
         )
     }
