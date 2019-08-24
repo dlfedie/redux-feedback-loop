@@ -4,23 +4,46 @@ import { connect } from 'react-redux';
 class Comments extends Component {
     //again, set local state here
     state = {
-        understanding: ''
+        comments: ''
     }
+
+    //also need again the handleChange
+    handleChange = (event) => {
+        //whenever our textbox is edited, store in local state
+        this.setState({ comments: event.target.value });
+    }
+
+    //this should set value to state, send that to Redux store to store, then continue to next question
+    setComments = (event) => {
+        //react, we've been over this... no page reloads!
+        event.preventDefault();
+
+        //no need to validate, commemnts are optional
+
+
+        //set store in Redux!
+        this.props.dispatch({
+            type: 'SET_COMMENTS',
+            payload: this.state.comments
+        })
+
+        //clear local state
+        this.setState({ coments: '' })
+
+        //then move to page 3: supported
+        this.props.history.push('/review')
+    }
+
+
 
     render() {
         return (
             <>
-                <h2>How well are you understanding the content?</h2>
+                <h2>Any comments you would like to leave?</h2>
                 {JSON.stringify(this.state)}
-                <form onSubmit={this.setFeeling}>
-                    <select name="understanding" value={this.state.understanding} onChange={this.handleChange}>
-                        <option value="5">5 - Let me teach you some tricks!</option>
-                        <option value="4">4 - I've got this!</option>
-                        <option value="3">3 - Little fuzzy, but let me take a crack at it</option>
-                        <option value="2">2 - I'm struggling to grasp this right now</option>
-                        <option value="1">1 - Wait, what?</option>
-                    </select>
-                    <p>Please choose a number, with 5 being "I could teach this!" and 1 being "Were you speaking a language I speak today?".</p>
+                <form onSubmit={this.setComments}>
+                    <textarea value={this.state.comments} onChange={this.handleChange} rows="5" cols="60"/>
+                    <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>
                     <button type="submit">Next</button>
                 </form>
             </>

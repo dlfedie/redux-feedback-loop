@@ -7,7 +7,7 @@ class Feeling extends Component {
 
     //let's set local state to store selection
     state ={
-        feeling: ''
+        feeling: '3'
     }
 
     handleChange = (event) => {

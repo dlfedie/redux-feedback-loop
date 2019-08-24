@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 class Understanding extends Component {
     //again, set local state here
     state = {
-        understanding: ''
+        understanding: '3'
     }
 
     //also need again the handleChange

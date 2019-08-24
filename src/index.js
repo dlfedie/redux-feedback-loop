@@ -19,6 +19,10 @@ const newFeedback = (state = {}, action) => {
             return { ...state, feeling: action.payload }
         case 'SET_UNDERSTANDING':
             return { ...state, understanding: action.payload}
+        case 'SET_SUPPORTED':
+            return { ...state, supported: action.payload}
+        case 'SET_COMMENTS':
+            return { ...state, comments: action.payload}
         default:
             return state
     }
