@@ -5,7 +5,7 @@ import Form from '../Form/Form';
 class Understanding extends Component {
     //again, set local state here
     state = {
-        understanding: '3',
+        understanding: 'none',
         optionTexts: {
             name: 'understanding',
             option5Text: '5 - Let me teach you some tricks!',
@@ -28,7 +28,7 @@ class Understanding extends Component {
         //react, we've been over this... no page reloads!
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
-        if (this.state.understanding === '') {
+        if (this.state.understanding === 'none') {
             alert('Please make a selection.');
             return
         }

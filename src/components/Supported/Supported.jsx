@@ -5,7 +5,7 @@ import Form from '../Form/Form';
 class Supported extends Component {
     //again, set local state here
     state = {
-        supported: '3',
+        supported: 'none',
         optionTexts: {
             name: 'supported',
             option5Text: `5 - It's award show thank you speech time!`,
@@ -29,7 +29,7 @@ class Supported extends Component {
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
         //pop up with alert if empty (also not needed with default set..)
-        if (this.state.supported === '') {
+        if (this.state.supported === 'none') {
             alert('Please make a selection.');
             return
         }

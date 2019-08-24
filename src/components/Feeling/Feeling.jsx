@@ -8,7 +8,7 @@ class Feeling extends Component {
 
     //let's set local state to store selection
     state = {
-        feeling: '3',
+        feeling: 'none',
         optionTexts: {
             name: 'feeling',
             option5Text: '5 - Great!',
@@ -30,7 +30,7 @@ class Feeling extends Component {
         //hey, don't reload this page on me, please
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
-        if (this.state.feeling === '') {
+        if (this.state.feeling === 'none') {
             alert('Please make a selection.');
             return
         }
