@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Form from '../Form/Form';
 
 class Supported extends Component {
     //again, set local state here
     state = {
-        supported: '3'
+        supported: '3',
+        optionTexts: {
+            name: 'supported',
+            option5Text: `5 - It's award show thank you speech time!`,
+            option4Text: '4 - Pretty well supported!',
+            option3Text: '3 - Alright',
+            option2Text: `2 - I'm struggling right now`,
+            option1Text: `1 - I'm on an island here...`,
+            tagLine: `Please choose a number, with 5 being "I've never felt more supported in my life!" and 1 being "I would like to talk to someone.".`
+        }
     }
 
     //also need again the handleChange
@@ -43,8 +53,14 @@ class Supported extends Component {
         return (
             <>
                 <h2>How well are you being supported?</h2>
-                {JSON.stringify(this.state)}
-                <form onSubmit={this.setSupport}>
+                {/* {JSON.stringify(this.state)} */}
+                <Form 
+                question={this.state.supported}
+                setQuestion={this.setSupport}
+                handleChange={this.handleChange}
+                optionTexts={this.state.optionTexts}
+                />
+                {/* <form onSubmit={this.setSupport}>
                     <select name="supported" value={this.state.supported} onChange={this.handleChange}>
                         <option value="5">5 - It's award show thank you speech time!</option>
                         <option value="4">4 - Pretty well supported!</option>
@@ -54,7 +70,7 @@ class Supported extends Component {
                     </select>
                     <p>Please choose a number, with 5 being "I've never felt more supported in my life!" and 1 being "Is anyone out there?".</p>
                     <button type="submit">Next</button>
-                </form>
+                </form> */}
             </>
         )
     }
