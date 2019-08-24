@@ -11,14 +11,20 @@ import logger from 'redux-logger';
 
 //Reducers
 const newFeedback = (state = {}, action) => {
-    //feeling set
-    if (action.type === 'SET_FEELING') {
-        return {...state, feeling: action.payload}
+    //doing a swtich statement for each form. adds a new key onto our store of new feedback.
+    //default just returns state.
+    
+    switch (action.type) {
+        case 'SET_FEELING':
+            return { ...state, feeling: action.payload }
+        case 'SET_UNDERSTANDING':
+            return { ...state, understanding: action.payload}
+        default:
+            return state
     }
 
 
-    //always return something
-    return state
+    
 
 }
 

@@ -7,7 +7,7 @@ class Feeling extends Component {
 
     //let's set local state to store selection
     state ={
-        feeling: '3'
+        feeling: ''
     }
 
     handleChange = (event) => {
@@ -19,16 +19,21 @@ class Feeling extends Component {
     setFeeling = (event) => {
         //hey, don't reload this page on me, please
         event.preventDefault();
-        //validate entry
-        //not needed at the moment, default set at 3 on select menu
+        //validate entry. return to not dispatch anything and keep on this page.
+        if (this.state.feeling === '') {
+            alert('Please make a selection.');
+            return
+        }
 
-        //pop up with alert if empty (also not needed with default set..)
 
         //set store in Redux!
         this.props.dispatch({
             type: 'SET_FEELING',
             payload: this.state.feeling
         })
+        //clear local state
+        this.setState({feeling: ''});
+
 
         //then move to page 2: understanding
         this.props.history.push('/understanding')
@@ -60,10 +65,6 @@ class Feeling extends Component {
 
 
 //actually don't need to map.. just dispatching to store
-// const mapStateToProps = (store) => {
-//     return {
-//         blah: store.newFeedback
-//     }
-// }
+
 
 export default connect()(Feeling);

@@ -4,6 +4,9 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
+import Supported from '../Supported/Supported';
+import Comments from '../Comments/Comments';
+import Review from '../Review/Review';
 
 class App extends Component {
   render() {
@@ -24,13 +27,13 @@ class App extends Component {
                 <Link to="/understanding">Understanding p2</Link>
               </li>
               <li>
-                <Link></Link>
+                <Link to="/supported">Supported p3</Link>
               </li>
               <li>
-                <Link></Link>
+                <Link to="/comments">Comments p4</Link>
               </li>
               <li>
-                <Link></Link>
+                <Link to="/review">Review p5</Link>
               </li>
             </ul>
           </nav>
@@ -38,6 +41,9 @@ class App extends Component {
           {/* Order of form is Feeling, Understanding, Supported, Comments. Then a Review. */}
           <Route path={'/'} exact component={Feeling} />
           <Route path={'/understanding'} component={Understanding} />
+          <Route path={'/supported'} component={Supported} />
+          <Route path={'/comments'} component={Comments} />
+          <Route path={'/review'} component={Review} />
         </div>
       </Router>
     );
