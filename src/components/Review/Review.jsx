@@ -10,7 +10,18 @@ import axios from 'axios';
 class Review extends Component {
 
     handleSubmit = () => {
+        //check if submit button works
         console.log('clicked submit!');
+        //need to post to database. no need for response to do anything.
+        axios.post('/feedback', this.props.newFeedback)
+         .then((response) => {
+            //if successful, send to next page (submitted)
+             this.props.history.push('/submitted');
+
+         }).catch((err) => {
+             console.log(err);
+             alert('Error sending data: ', err);
+         })
 
     }
 

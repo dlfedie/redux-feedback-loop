@@ -14,7 +14,7 @@ class Submitted extends Component {
 
         return (
             <>
-            <p>Thanks for submitting!</p>
+            <h2>Thanks for submitting!</h2>
             <button onClick={this.goToBeginning}>Leave New Feedback</button>
             </>
         )
