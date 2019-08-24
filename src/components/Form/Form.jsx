@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+//need history from Router so we can use the back button
+import { withRouter } from "react-router";
 
 class Form extends Component {
 
@@ -22,11 +24,15 @@ class Form extends Component {
                     <option value="1">{this.props.optionTexts.option1Text}</option>
                 </select>
                 <p>{this.props.optionTexts.tagLine}</p>
-                <button type="submit">Next</button>
+                <div>
+                    {this.props.backButtonShow && <button onClick={() => {this.props.history.push(this.props.backTo)}}>Back</button>}
+                    <button type="submit">Next</button>
+                </div>
+                
             </form>
             </>
         )
     }
 }
 
-export default Form;
+export default withRouter(Form);

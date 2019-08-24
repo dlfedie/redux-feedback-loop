@@ -13,6 +13,11 @@ class Review extends Component {
          .then((response) => {
             //alert user that it has been submitted. maybe try out material snackbars?
             alert('Comment submitted!');
+            //if/when we use redux to store our values, tell them to revert to default
+            this.props.dispatch({
+                type: 'SET_DEFAULTS',
+            })
+
             //if successful, send to next page (submitted)
              this.props.history.push('/submitted');
 

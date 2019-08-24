@@ -10,7 +10,7 @@ import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
 //Reducers
-const newFeedback = (state = {}, action) => {
+const newFeedback = (state = {feeling: 'none', }, action) => {
     //doing a swtich statement for each form. adds a new key onto our store of new feedback.
     //default just returns state.
     
@@ -23,6 +23,8 @@ const newFeedback = (state = {}, action) => {
             return { ...state, supported: action.payload}
         case 'SET_COMMENTS':
             return { ...state, comments: action.payload}
+        case 'SET_DEFAULTS':
+            return { feeling: 'none', }
         default:
             return state
     }

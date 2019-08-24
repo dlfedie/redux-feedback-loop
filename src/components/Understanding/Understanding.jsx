@@ -14,7 +14,9 @@ class Understanding extends Component {
             option2Text: `2 - I'm struggling to grasp this right now`,
             option1Text: '1 - Wait, what?',
             tagLine: 'Please choose a number, with 5 being "I could teach this!" and 1 being "Were you speaking a language I speak today?".'
-        }
+        },
+        backButtonShow: true,
+        backTo: '/'
     }
 
     //also need again the handleChange
@@ -59,6 +61,8 @@ class Understanding extends Component {
                 setQuestion={this.setUnderstanding}
                 handleChange={this.handleChange}
                 optionTexts={this.state.optionTexts}
+                backButtonShow={this.state.backButtonShow}
+                backTo={this.state.backTo}
                 />
                 {/* <form onSubmit={this.setUnderstanding}>
                     <select name="understanding" value={this.state.understanding} onChange={this.handleChange}>

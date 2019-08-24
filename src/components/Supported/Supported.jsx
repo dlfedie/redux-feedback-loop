@@ -14,7 +14,9 @@ class Supported extends Component {
             option2Text: `2 - I'm struggling right now`,
             option1Text: `1 - I'm on an island here...`,
             tagLine: `Please choose a number, with 5 being "I've never felt more supported in my life!" and 1 being "I would like to talk to someone.".`
-        }
+        },
+        backButtonShow: true,
+        backTo: '/understanding'
     }
 
     //also need again the handleChange
@@ -59,6 +61,8 @@ class Supported extends Component {
                 setQuestion={this.setSupport}
                 handleChange={this.handleChange}
                 optionTexts={this.state.optionTexts}
+                backButtonShow={this.state.backButtonShow}
+                backTo={this.state.backTo}
                 />
                 {/* <form onSubmit={this.setSupport}>
                     <select name="supported" value={this.state.supported} onChange={this.handleChange}>
