@@ -3,10 +3,6 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 
 
-
-
-
-
 class Review extends Component {
 
     handleSubmit = () => {
@@ -15,6 +11,8 @@ class Review extends Component {
         //need to post to database. no need for response to do anything.
         axios.post('/feedback', this.props.newFeedback)
          .then((response) => {
+            //alert user that it has been submitted. maybe try out material snackbars?
+            alert('Comment submitted!');
             //if successful, send to next page (submitted)
              this.props.history.push('/submitted');
 
