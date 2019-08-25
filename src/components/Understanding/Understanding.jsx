@@ -5,7 +5,7 @@ import Form from '../Form/Form';
 class Understanding extends Component {
     //again, set local state here
     state = {
-        understanding: 'none',
+        // understanding: 'none',
         optionTexts: {
             name: 'understanding',
             option5Text: '5 - Let me teach you some tricks!',
@@ -22,7 +22,15 @@ class Understanding extends Component {
     //also need again the handleChange
     handleChange = (event) => {
         //whenever our select options are selected, store in local state
-        this.setState({ understanding: event.target.value });
+        // this.setState({ understanding: event.target.value });
+
+        //now we want to target redux so we can bounce around to all values. only on submit will i now set the values back to 'none'
+        //set store in Redux!
+        this.props.dispatch({
+            type: 'SET_UNDERSTANDING',
+            payload: event.target.value
+        })
+
     }
 
     //this should set value to state, send that to Redux store to store, then continue to next question
@@ -30,21 +38,23 @@ class Understanding extends Component {
         //react, we've been over this... no page reloads!
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
-        if (this.state.understanding === 'none') {
+        if (this.props.store.newFeedback.understanding === 'none') {
             alert('Please make a selection.');
             return
         }
 
         //pop up with alert if empty (also not needed with default set..)
 
-        //set store in Redux!
-        this.props.dispatch({
-            type: 'SET_UNDERSTANDING',
-            payload: this.state.understanding
-        })
+        //below 2 are not needed, storing in redux
 
-        //clear local state
-        this.setState({ understanding: '' })
+        // //set store in Redux!
+        // this.props.dispatch({
+        //     type: 'SET_UNDERSTANDING',
+        //     payload: this.state.understanding
+        // })
+
+        // //clear local state
+        // this.setState({ understanding: '' })
 
         //then move to page 3: supported
         this.props.history.push('/supported')
@@ -57,7 +67,7 @@ class Understanding extends Component {
                 <h2>How well are you understanding the content?</h2>
                 {/* {JSON.stringify(this.state)} */}
                 <Form 
-                question={this.state.understanding}
+                question={this.props.store.newFeedback.understanding}
                 setQuestion={this.setUnderstanding}
                 handleChange={this.handleChange}
                 optionTexts={this.state.optionTexts}
@@ -80,4 +90,11 @@ class Understanding extends Component {
     }
 }
 
-export default connect()(Understanding);
+//ok, now we're storing state in Redux, so let's go get it!
+const mapStateToProps = (store) => {
+    return {
+        store
+    }
+}
+
+export default connect(mapStateToProps)(Understanding);

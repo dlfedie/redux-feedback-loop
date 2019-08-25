@@ -5,7 +5,7 @@ import Form from '../Form/Form';
 class Supported extends Component {
     //again, set local state here
     state = {
-        supported: 'none',
+        // supported: 'none',
         optionTexts: {
             name: 'supported',
             option5Text: `5 - It's award show thank you speech time!`,
@@ -22,7 +22,13 @@ class Supported extends Component {
     //also need again the handleChange
     handleChange = (event) => {
         //whenever our select options are selected, store in local state
-        this.setState({ supported: event.target.value });
+        // this.setState({ supported: event.target.value });
+
+        //now using redux
+        this.props.dispatch({
+            type: 'SET_SUPPORTED',
+            payload: event.target.value
+        })
     }
 
     //this should set value to state, send that to Redux store to store, then continue to next question
@@ -31,20 +37,20 @@ class Supported extends Component {
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
         //pop up with alert if empty (also not needed with default set..)
-        if (this.state.supported === 'none') {
+        if (this.props.store.newFeedback.supported === 'none') {
             alert('Please make a selection.');
             return
         }
 
+        //being set on selection now!
+        // //set store in Redux!
+        // this.props.dispatch({
+        //     type: 'SET_SUPPORTED',
+        //     payload: this.state.supported
+        // })
 
-        //set store in Redux!
-        this.props.dispatch({
-            type: 'SET_SUPPORTED',
-            payload: this.state.supported
-        })
-
-        //clear local state
-        this.setState({ supported: '' })
+        // //clear local state
+        // this.setState({ supported: '' })
 
         //then move to page 4: comments
         this.props.history.push('/comments')
@@ -57,7 +63,7 @@ class Supported extends Component {
                 <h2>How well are you being supported?</h2>
                 {/* {JSON.stringify(this.state)} */}
                 <Form 
-                question={this.state.supported}
+                question={this.props.store.newFeedback.supported}
                 setQuestion={this.setSupport}
                 handleChange={this.handleChange}
                 optionTexts={this.state.optionTexts}
@@ -80,4 +86,11 @@ class Supported extends Component {
     }
 }
 
-export default connect()(Supported);
+//ok, now we're storing state in Redux, so let's go get it!
+const mapStateToProps = (store) => {
+    return {
+        store
+    }
+}
+
+export default connect(mapStateToProps)(Supported);
