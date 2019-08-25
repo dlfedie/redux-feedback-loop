@@ -21,4 +21,4 @@ class Submitted extends Component {
     }
 }
 
-export default Submitted
+export default Submitted;

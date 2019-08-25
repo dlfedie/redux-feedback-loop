@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Form from '../Form/Form';
+import Swal from 'sweetalert2';
 
 class Supported extends Component {
     //again, set local state here
@@ -38,7 +39,12 @@ class Supported extends Component {
         //validate entry. return to not dispatch anything and keep on this page.
         //pop up with alert if empty (also not needed with default set..)
         if (this.props.store.newFeedback.supported === 'none') {
-            alert('Please make a selection.');
+            // alert('Please make a selection.');
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Please select a score from the list.',
+            })
             return
         }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Form from '../Form/Form';
+import Swal from 'sweetalert2';
 
 class Feeling extends Component {
     //this component will ask how the user is feeling today, 5 is best, 1 is bad.
@@ -39,7 +40,12 @@ class Feeling extends Component {
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
         if (this.props.store.newFeedback.feeling === 'none') {
-            alert('Please make a selection.');
+            // alert('Please make a selection.');
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Please select a score from the list.',
+            })
             return
         }
 

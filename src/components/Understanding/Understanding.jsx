@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Form from '../Form/Form';
+import Swal from 'sweetalert2';
 
 class Understanding extends Component {
     //again, set local state here
@@ -39,11 +40,15 @@ class Understanding extends Component {
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
         if (this.props.store.newFeedback.understanding === 'none') {
-            alert('Please make a selection.');
+            // alert('Please make a selection.');
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Please select a score from the list.',
+            })
             return
         }
 
-        //pop up with alert if empty (also not needed with default set..)
 
         //below 2 are not needed, storing in redux
 
