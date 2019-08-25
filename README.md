@@ -1,30 +1,30 @@
 # Redux Feedback Loop
 
-This is an application build to test our skills at React and Redux. It is an application designed to take user input for feedback, cycle them through all of their choices, allow them to move back and edit choices, and finally post those to a database. There is also an Admin page that an administrator can go and take a look at all posted feedback.
+This is an application build to test our skills at React and Redux. It is an application designed to take user input for daily feedback, allow them to cycle them through all of their choices, allow them to move back and edit choices, and finally post those to a database. There is also an Admin page that an administrator can go and take a look at all posted feedback.
 
-# Built With
+## Built With
 
 React.js, Redux, Node.js, Express.js, SQL, Material UI.
 
-# Getting Started
+## Getting Started
 Clone this repo and extract it to a folder on your computer. 
 
-# Prerequisites
+### Prerequisites
 
-Node.js
-Postico (or another database application)
+- Node.js
+- Postico (or another database application)
 
 List other prerequisites here
 
-# Installing
+### Installing
 
 Download this project.
 ```
-npm install
-npm run server
-npm run client
+1. `npm install`
+2. `npm run server`
+3. `npm run client`
 ```
-And so on...
+Go to localhost:3000/ in a browser!
 
 
 
