@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
 
 
 class Review extends Component {
@@ -8,11 +10,20 @@ class Review extends Component {
     handleSubmit = () => {
         //check if submit button works
         console.log('clicked submit!');
+        
         //need to post to database. no need for response to do anything.
         axios.post('/feedback', this.props.newFeedback)
             .then((response) => {
                 //alert user that it has been submitted. maybe try out material snackbars?
-                alert('Comment submitted!');
+                // alert('Comment submitted!');
+
+                //let's now add a Swal to this
+
+                Swal.fire(
+                    'Submitted!',
+                    'You have submitted your feedback.',
+                    'success'
+                )
                 //if/when we use redux to store our values, tell them to revert to default
                 this.props.dispatch({
                     type: 'SET_DEFAULTS',
@@ -27,7 +38,8 @@ class Review extends Component {
 
             }).catch((err) => {
                 console.log(err);
-                alert('Error sending data: ', err);
+                // alert('Error sending data: ', err);
+                Swal.fire('Oh no!', `Error sending data to server: ${err}`)
             })
 
     }

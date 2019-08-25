@@ -31,16 +31,33 @@ router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "feedback"
                      ORDER BY "date" DESC`
     pool.query(queryText)
-     .then((result) => {
-         console.log('result from db:', result.rows); //test connection
-         res.send(result.rows); //send db rows!
-     }).catch((err) => {
-         console.log('error in GET req: ', err); //log error in server
-         res.sendStatus(500); //no server codes for you, fellow postmen
-     })
-    
+        .then((result) => {
+            console.log('result from db:', result.rows); //test connection
+            res.send(result.rows); //send db rows!
+        }).catch((err) => {
+            console.log('error in GET req: ', err); //log error in server
+            res.sendStatus(500); //no server codes for you, fellow postmen
+        })
+})
 
-
+router.delete('/:id', (req, res) => {
+    const feedbackID = req.params.id;
+    //get our ID and see if it shows up here.
+    console.log('ID of feedback to delete:', feedbackID);
+    //it does! so now the query, with sanitized sql
+    const queryText = `DELETE FROM "feedback" WHERE "id" = $1;`;
+    pool.query(queryText, [feedbackID])
+        .then((result) => {
+            //log local on server message
+            console.log('deleted feedback ID of ', feedbackID);
+            //send thumbs up, no content
+            res.sendStatus(204);
+        }).catch((error) => {
+            //log error locally on server
+            console.log('error making delete from DB: ', error);
+            //tell client /shrug, server error
+            res.sendStatus(500);
+        })
 
 })
 
