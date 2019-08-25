@@ -19,11 +19,11 @@ List other prerequisites here
 ### Installing
 
 Download this project.
-```
-1. `npm install`
+
+1. `npm install` - to get all required node dependencies.
 2. `npm run server`
 3. `npm run client`
-```
+
 Go to localhost:3000/ in a browser!
 
 
