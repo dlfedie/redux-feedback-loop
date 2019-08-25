@@ -28,6 +28,10 @@ Go to localhost:3000/ in a browser!
 
 
 
+
+
+
+
 >Do not clone this repository. Instead, download the zip, extract the contents, create a new GitHub repository and `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
 
 **PLEASE COMMENT YOUR CODE.**

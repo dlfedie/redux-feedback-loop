@@ -20,7 +20,7 @@ class App extends Component {
             <h4><i>Don't forget it!</i></h4>
           </header>
           {/* nav for development only... may add in later as different menu style */}
-          <nav>
+          {/* <nav>
             <ul>
               <li>
                 <Link to="/">Home/Feeling p1</Link>
@@ -44,7 +44,7 @@ class App extends Component {
                 <Link to="/admin">Admin p7</Link>
               </li>
             </ul>
-          </nav>
+          </nav> */}
           <br />
           {/* Order of form is Feeling, Understanding, Supported, Comments. Then a Review. */}
           <Route path={'/'} exact component={Feeling} />

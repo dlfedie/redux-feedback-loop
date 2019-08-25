@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '@material-ui/core/Button';
 
 class Submitted extends Component {
 
@@ -15,7 +16,7 @@ class Submitted extends Component {
         return (
             <>
             <h2>Thanks for submitting!</h2>
-            <button onClick={this.goToBeginning}>Leave New Feedback</button>
+            <Button variant="contained" color="primary" onClick={this.goToBeginning}>Leave New Feedback</Button>
             </>
         )
     }

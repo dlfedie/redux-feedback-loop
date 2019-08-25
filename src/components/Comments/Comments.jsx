@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 class Comments extends Component {
     //again, set local state here
@@ -48,8 +50,17 @@ class Comments extends Component {
                 <form onSubmit={this.setComments}>
                     <textarea value={this.props.store.newFeedback.comments} onChange={this.handleChange} rows="5" cols="60" />
                     <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>
-                    <button onClick={() => { this.props.history.push('/supported') }}>Back</button>
-                    <button type="submit">Next</button>
+                    <ButtonGroup
+                        variant="contained"
+                        color="primary"
+                        aria-label="full-width contained primary button group"
+                    >
+                        <Button onClick={() => { this.props.history.push('/supported') }}>Back</Button>
+                        <Button type="submit">Next</Button>
+                    </ButtonGroup>
+
+                    {/* <button onClick={() => { this.props.history.push('/supported') }}>Back</button>
+                    <button type="submit">Next</button> */}
                 </form>
             </>
         )

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
 
 
 
@@ -54,8 +57,16 @@ class Review extends Component {
                 <h3 className="reviewHovers" onClick={() => { this.props.history.push('/supported') }}>Support: {this.props.newFeedback.supported}</h3>
                 <h3 className="reviewHovers" onClick={() => { this.props.history.push('/comments') }}>Comments: {this.props.newFeedback.comments}</h3>
                 <p>Click on any line to go back to that page.</p>
-                <button onClick={() => { this.props.history.push('/comments') }}>Back</button>
-                <button onClick={this.handleSubmit}>Submit</button>
+                <ButtonGroup
+                    variant="contained"
+                    color="primary"
+                    aria-label="full-width contained primary button group"
+                >
+                    <Button onClick={() => { this.props.history.push('/comments') }}>Back</Button>
+                    <Button onClick={this.handleSubmit}>Submit</Button>
+                </ButtonGroup>
+                {/* <button onClick={() => { this.props.history.push('/comments') }}>Back</button>
+                <button onClick={this.handleSubmit}>Submit</button> */}
             </>
         )
     }
