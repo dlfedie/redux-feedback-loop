@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 
 class Comments extends Component {
     //again, set local state here
-    state = {
-        comments: ''
-    }
+    // state = {
+    //     comments: ''
+    // }
 
     //also need again the handleChange
     handleChange = (event) => {
         //whenever our textbox is edited, store in local state
-        this.setState({ comments: event.target.value });
+        // this.setState({ comments: event.target.value });
+        this.props.dispatch({
+            type: 'SET_COMMENTS',
+            payload: event.target.value
+        })
     }
 
     //this should set value to state, send that to Redux store to store, then continue to next question
@@ -21,14 +25,14 @@ class Comments extends Component {
         //no need to validate, commemnts are optional
 
 
-        //set store in Redux!
-        this.props.dispatch({
-            type: 'SET_COMMENTS',
-            payload: this.state.comments
-        })
+        // //set store in Redux!
+        // this.props.dispatch({
+        //     type: 'SET_COMMENTS',
+        //     payload: this.state.comments
+        // })
 
-        //clear local state
-        this.setState({ coments: '' })
+        // //clear local state
+        // this.setState({ coments: '' })
 
         //then move to page 5: review
         this.props.history.push('/review')
@@ -42,8 +46,9 @@ class Comments extends Component {
                 <h2>Any comments you would like to leave?</h2>
                 {/* {JSON.stringify(this.state)} */}
                 <form onSubmit={this.setComments}>
-                    <textarea value={this.state.comments} onChange={this.handleChange} rows="5" cols="60"/>
+                    <textarea value={this.props.store.newFeedback.comments} onChange={this.handleChange} rows="5" cols="60" />
                     <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>
+                    <button onClick={() => { this.props.history.push('/supported') }}>Back</button>
                     <button type="submit">Next</button>
                 </form>
             </>
@@ -51,4 +56,11 @@ class Comments extends Component {
     }
 }
 
-export default connect()(Comments);
+//ok, now we're storing state in Redux, so let's go get it!
+const mapStateToProps = (store) => {
+    return {
+        store
+    }
+}
+
+export default connect(mapStateToProps)(Comments);

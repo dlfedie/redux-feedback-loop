@@ -44,3 +44,7 @@ li a:hover {
   background-color: rgb(124, 160, 184)
 }
 
+.reviewHovers:hover {
+  display: inline;
+  background-color: rgb(154, 186, 207);
+}

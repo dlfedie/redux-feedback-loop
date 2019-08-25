@@ -8,7 +8,7 @@ class Feeling extends Component {
 
     //let's set local state to store selection
     state = {
-        feeling: 'none',
+        // feeling: 'none',
         optionTexts: {
             name: 'feeling',
             option5Text: '5 - Great!',
@@ -17,12 +17,20 @@ class Feeling extends Component {
             option2Text: `2 - I've been better`,
             option1Text: '1 - Not good',
             tagLine: 'Please choose a number, with 5 being "Great!" and 1 being "Not good".'
-        }
+        },
+        backButtonShow: false
     }
 
     handleChange = (event) => {
         //whenever our select options are selected, store in local state
-        this.setState({feeling: event.target.value});
+        // this.setState({feeling: event.target.value});
+
+        //now we want to target redux so we can bounce around to all values. only on submit will i now set the values back to 'none'
+        //set store in Redux!
+        this.props.dispatch({
+            type: 'SET_FEELING',
+            payload: event.target.value
+        })
     }
     
     //this should set value to state, send that to Redux store to store, then continue to next question
@@ -30,19 +38,21 @@ class Feeling extends Component {
         //hey, don't reload this page on me, please
         event.preventDefault();
         //validate entry. return to not dispatch anything and keep on this page.
-        if (this.state.feeling === 'none') {
+        if (this.props.store.newFeedback.feeling === 'none') {
             alert('Please make a selection.');
             return
         }
 
 
         //set store in Redux!
-        this.props.dispatch({
-            type: 'SET_FEELING',
-            payload: this.state.feeling
-        })
+        //we'll not need this now.
+        // this.props.dispatch({
+        //     type: 'SET_FEELING',
+        //     payload: this.state.feeling
+        // })
         //clear local state
-        this.setState({feeling: ''});
+        // this.setState({feeling: ''});
+        //local state not needed, now that we're storing in redux.
 
 
         //then move to page 2: understanding
@@ -57,12 +67,14 @@ class Feeling extends Component {
             <>
                 <h2>How are you feeling today?</h2>
                 {/* {JSON.stringify(this.state)} */}
+                {/* {JSON.stringify(this.props.store.newFeedback.feeling)} */}
 
                 <Form 
-                question={this.state.feeling} 
+                question={this.props.store.newFeedback.feeling} 
                 setQuestion={this.setFeeling} 
                 handleChange={this.handleChange} 
                 optionTexts={this.state.optionTexts}
+                backButtonShow={this.state.backButtonShow}
                 />
                 {/* <form onSubmit={this.setFeeling}>
                     <select name="feeling" value={this.state.feeling} onChange={this.handleChange}>
@@ -83,5 +95,12 @@ class Feeling extends Component {
 
 //actually don't need to map.. just dispatching to store
 
+//ok, now we're storing state in Redux, so let's go get it!
+const mapStateToProps = (store) => {
+    return {
+        store
+    }
+}
 
-export default connect()(Feeling);
+
+export default connect(mapStateToProps)(Feeling);
