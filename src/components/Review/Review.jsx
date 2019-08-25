@@ -18,6 +18,10 @@ class Review extends Component {
                     type: 'SET_DEFAULTS',
                 })
 
+                //going to need to refresh data on admin page, too
+
+
+
                 //if successful, send to next page (submitted)
                 this.props.history.push('/submitted');
 
@@ -48,7 +52,8 @@ class Review extends Component {
 //need to map our redux store to props. will just set as newFeedback
 const mapStateToProps = (store) => {
     return {
-        newFeedback: store.newFeedback
+        newFeedback: store.newFeedback,
+        setFeedback: store.setFeedback,
     }
 }
 

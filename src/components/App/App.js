@@ -8,6 +8,7 @@ import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import Submitted from '../Submitted/Submitted';
+import Admin from '../Admin/Admin';
 
 class App extends Component {
   render() {
@@ -39,6 +40,9 @@ class App extends Component {
               <li>
                 <Link to="/submitted">Submitted p6</Link>
               </li>
+              <li>
+                <Link to="/admin">Admin p7</Link>
+              </li>
             </ul>
           </nav>
           <br />
@@ -49,6 +53,7 @@ class App extends Component {
           <Route path={'/comments'} component={Comments} />
           <Route path={'/review'} component={Review} />
           <Route path={'/submitted'} component={Submitted} />
+          <Route path={'/admin'} component={Admin} />
         </div>
       </Router>
     );

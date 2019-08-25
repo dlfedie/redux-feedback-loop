@@ -39,18 +39,23 @@ const newFeedback = (state = {
         default:
             return state
     }
-
-
-
-
 }
 
+const allFeedback = (state = [], action) => {
+    //if we get feedback, set it to this state
+    if (action.type === 'SET_FEEDBACK') {
+        return action.payload
+    }
 
+    return state;
+
+}
 
 //create store (with combine reducers)
 const store = createStore(
     combineReducers({
         newFeedback,
+        allFeedback,
     }),
     applyMiddleware(logger)
 );
