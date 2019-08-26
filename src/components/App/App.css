@@ -3,11 +3,12 @@
 }
 
 .App-header {
-  background-color: #033076;
+  background-color: #4caf50;
   min-height: 70px;
   padding: 20px;
   color: white;
 }
+/* 033076 */
 
 .App-title {
   font-size: 1.5em;
@@ -17,34 +18,10 @@
   font-size: large;
 }
 
-/* ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: rgb(154, 186, 207)
+.editIcon {
+  margin: 8px;
 }
 
-li {
-  float: left;
+.reviewRows {
+  align-content: center;
 }
-
-li a {
-  display: block;
-  text-align: center;
-  padding: 16px;
-
-}
-
-a:visited {
-  color: brown;
-}
-
-li a:hover {
-  background-color: rgb(124, 160, 184)
-}
-
-.reviewHovers:hover {
-  display: inline;
-  background-color: rgb(154, 186, 207);
-} */

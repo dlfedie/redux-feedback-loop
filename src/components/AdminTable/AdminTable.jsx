@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Fab from '@material-ui/core/Fab';
 
 
 class AdminTable extends Component {
@@ -12,8 +14,8 @@ class AdminTable extends Component {
             text: "You are about to delete feedback!",
             type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#4caf50',
+            cancelButtonColor: '#f4511e',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
@@ -24,16 +26,28 @@ class AdminTable extends Component {
                       //then refresh form, passed from props
                       this.props.getFeedback()
                   }).catch((error) => {
-                      Swal.fire('Oh no!', `The feedback could not be deleted. Server says: ${error}`)
+                      Swal.fire(
+                          {
+                              type: 'error',
+                              title: 'Oh no!',
+                              text: `The feedback could not be deleted. Server says: ${error}`,
+                              confirmButtonColor: '#4caf50',
+                              cancelButtonColor: '#f4511e',
+                          }
+                          )
                   })
 
 
 
 
                 Swal.fire(
-                    'Deleted!',
-                    'You have deleted the selected feedback.',
-                    'success'
+                    {
+                    type: 'success',
+                    title: 'Deleted!',
+                    text: 'You have deleted the selected feedback.',
+                    confirmButtonColor: '#4caf50',
+                    cancelButtonColor: '#f4511e',
+                    }
                 )
                 console.log('clicked delete button on ID:', id);
                 
@@ -41,9 +55,14 @@ class AdminTable extends Component {
             } else {
                 //if cancelled, then show confirmation of no delete
                 Swal.fire(
-                    'Whew!',
-                    'You saved the feedback!',
-                    'success'
+                    {
+                        type: 'success',
+                        title: 'Whew!',
+                        text: 'You saved the feedback!',
+                        confirmButtonColor: '#4caf50',
+                        cancelButtonColor: '#f4511e',
+                    }
+                    
                 )
                 console.log('no delete');
                 
@@ -62,7 +81,9 @@ class AdminTable extends Component {
                 <td>{this.props.submission.support}</td>
                 <td>{this.props.submission.comments}</td>
                 {/* <td>{submission.date}</td> */}
-                <td><button onClick={() => this.handleDelete(this.props.submission.id)}>Delete?</button></td>
+                <td> <Fab color="secondary" aria-label="delete" onClick={() => this.handleDelete(this.props.submission.id)}>
+                    <DeleteIcon /> </Fab></td>
+                {/* <td><button onClick={() => this.handleDelete(this.props.submission.id)}>Delete?</button></td> */}
             </tr>
         )
     }

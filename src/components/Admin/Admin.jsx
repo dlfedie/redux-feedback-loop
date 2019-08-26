@@ -24,7 +24,15 @@ class Admin extends Component {
           }).catch((err) => {
               console.log(err);
             //   alert(`Oh no! Couldn't get data at this time. Server says: `, err);
-              Swal.fire('Oh no!', `Couldn't get data at this time. Server says: ${err}`)
+              Swal.fire(
+                  {
+                      type: 'error',
+                      title: 'Oh no!',
+                      text: `Couldn't get data at this time. Server says: ${err}`,
+                      confirmButtonColor: '#4caf50',
+                      cancelButtonColor: '#f4511e',
+                  }
+                  )
 
           })
 

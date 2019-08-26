@@ -45,6 +45,8 @@ class Feeling extends Component {
                 type: 'error',
                 title: 'Oops...',
                 text: 'Please select a score from the list.',
+                confirmButtonColor: '#4caf50',
+                cancelButtonColor: '#f4511e',
             })
             return
         }
