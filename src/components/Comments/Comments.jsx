@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
 
 class Comments extends Component {
     //again, set local state here
@@ -46,22 +49,24 @@ class Comments extends Component {
         return (
             <>
                 <h2>Any comments you would like to leave?</h2>
-                {/* {JSON.stringify(this.state)} */}
-                <form onSubmit={this.setComments}>
-                    <textarea value={this.props.store.newFeedback.comments} onChange={this.handleChange} rows="5" cols="60" />
-                    <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>
-                    <ButtonGroup
-                        variant="contained"
-                        color="primary"
-                        aria-label="full-width contained primary button group"
-                    >
-                        <Button onClick={() => { this.props.history.push('/supported') }}>Back</Button>
-                        <Button type="submit">Next</Button>
-                    </ButtonGroup>
+                <Card>
+                    <CardContent>
+                        {/* {JSON.stringify(this.state)} */}
+                        <form onSubmit={this.setComments}>
+                            <textarea value={this.props.store.newFeedback.comments} onChange={this.handleChange} rows="5" cols="60" />
+                            <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>
+                            <ButtonGroup
+                                aria-label="full-width contained primary button group"
+                            >
+                                <Button variant="contained" color="secondary" onClick={() => { this.props.history.push('/supported') }}>Back</Button>
+                                <Button variant="contained" color="primary" type="submit">Next</Button>
+                            </ButtonGroup>
 
-                    {/* <button onClick={() => { this.props.history.push('/supported') }}>Back</button>
-                    <button type="submit">Next</button> */}
-                </form>
+                            {/* <button onClick={() => { this.props.history.push('/supported') }}>Back</button>
+                        <button type="submit">Next</button> */}
+                        </form>
+                    </CardContent>
+                </Card>
             </>
         )
     }
