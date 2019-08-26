@@ -60,7 +60,7 @@ class Review extends Component {
                         confirmButtonColor: '#4caf50',
                         cancelButtonColor: '#f4511e',
                     }
-                    )
+                )
             })
 
     }
@@ -72,53 +72,55 @@ class Review extends Component {
         return (
             <>
                 <h2>Review choices</h2>
-                <Card>
-                    <CardContent>
-                        <div className="reviewRows">
-                            <h3>Feeling: {this.props.newFeedback.feeling}
-                                <span className="editIcon">
-                                    <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/') }}>
-                                        <EditIcon />
-                                    </Fab>
-                                </span>
-                            </h3>
-                        </div>
-                        <div className="reviewRows">
-                            <h3>Understanding: {this.props.newFeedback.understanding}
-                                <span className="editIcon">
-                                    <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/understanding') }}>
-                                        <EditIcon />
-                                    </Fab>
-                                </span>
-                            </h3>
-                        </div>
-                        <div className="reviewRows">
-                            <h3>Support: {this.props.newFeedback.supported}
-                                <span className="editIcon">
-                                    <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/supported') }}>
-                                        <EditIcon />
-                                    </Fab>
-                                </span>
-                            </h3>
-                        </div>
-                        <div className="reviewRows">
-                            <h3>Comments: {this.props.newFeedback.comments}
-                                <span className="editIcon">
-                                    <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/comments') }}>
-                                        <EditIcon />
-                                    </Fab>
-                                </span>
-                            </h3>
-                        </div>
-                        <p>Click on the edit button to go back to that page.</p>
-                        <ButtonGroup
-                            aria-label="full-width contained primary button group"
-                        >
-                            <Button variant="contained" color="secondary" onClick={() => { this.props.history.push('/comments') }}>Back</Button>
-                            <Button variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
-                        </ButtonGroup>
-                    </CardContent>
-                </Card>
+                <div className="centerMe">
+                    <Card className="cards">
+                        <CardContent>
+                            <div className="reviewRows">
+                                <h3>Feeling: {this.props.newFeedback.feeling}
+                                    <span className="editIcon">
+                                        <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/') }}>
+                                            <EditIcon />
+                                        </Fab>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div className="reviewRows">
+                                <h3>Understanding: {this.props.newFeedback.understanding}
+                                    <span className="editIcon">
+                                        <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/understanding') }}>
+                                            <EditIcon />
+                                        </Fab>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div className="reviewRows">
+                                <h3>Support: {this.props.newFeedback.supported}
+                                    <span className="editIcon">
+                                        <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/supported') }}>
+                                            <EditIcon />
+                                        </Fab>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div className="reviewRows">
+                                <h3>Comments: {this.props.newFeedback.comments}
+                                    <span className="editIcon">
+                                        <Fab className="editIcon" color="secondary" aria-label="edit" onClick={() => { this.props.history.push('/comments') }}>
+                                            <EditIcon />
+                                        </Fab>
+                                    </span>
+                                </h3>
+                            </div>
+                            <p>Click on the edit button to go back to that page.</p>
+                            <ButtonGroup
+                                aria-label="full-width contained primary button group"
+                            >
+                                <Button variant="contained" color="secondary" onClick={() => { this.props.history.push('/comments') }}>Back</Button>
+                                <Button variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
+                            </ButtonGroup>
+                        </CardContent>
+                    </Card>
+                </div>
 
                 {/* <button onClick={() => { this.props.history.push('/comments') }}>Back</button>
                 <button onClick={this.handleSubmit}>Submit</button> */}

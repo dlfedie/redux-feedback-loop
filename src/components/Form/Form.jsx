@@ -23,29 +23,30 @@ class Form extends Component {
         return (
             <>
                 {/* {JSON.stringify(this.props)} */}
-                <Card>
-                    <CardContent>
-                        <form onSubmit={this.props.setQuestion}>
-                            <FormControl variant="filled" >
-                                <InputLabel >{this.props.optionTexts.name}</InputLabel>
-                                <Select
-                                    value={this.props.question}
-                                    onChange={this.props.handleChange}
-                                    input={<Input name="this.props.optionTexts.name}" id="this.props.optionTexts.name}" />}
-                                    autoWidth
-                                >
-                                    <MenuItem value="none">
-                                        <em></em>
-                                    </MenuItem>
-                                    <MenuItem value={5}>{this.props.optionTexts.option5Text}</MenuItem>
-                                    <MenuItem value={4}>{this.props.optionTexts.option4Text}</MenuItem>
-                                    <MenuItem value={3}>{this.props.optionTexts.option3Text}</MenuItem>
-                                    <MenuItem value={2}>{this.props.optionTexts.option2Text}</MenuItem>
-                                    <MenuItem value={1}>{this.props.optionTexts.option1Text}</MenuItem>
-                                </Select>
-                                {/* <FormHelperText>{this.props.optionTexts.name}</FormHelperText> */}
-                            </FormControl>
-                            {/* <select name={this.props.optionTexts.name} value={this.props.question} onChange={this.props.handleChange}>
+                <div className="centerMe">
+                    <Card className="cards">
+                        <CardContent>
+                            <form onSubmit={this.props.setQuestion}>
+                                <FormControl variant="filled" >
+                                    <InputLabel >{this.props.optionTexts.name}</InputLabel>
+                                    <Select
+                                        value={this.props.question}
+                                        onChange={this.props.handleChange}
+                                        input={<Input name="this.props.optionTexts.name}" id="this.props.optionTexts.name}" />}
+                                        autoWidth
+                                    >
+                                        <MenuItem value="none">
+                                            <em></em>
+                                        </MenuItem>
+                                        <MenuItem value={5}>{this.props.optionTexts.option5Text}</MenuItem>
+                                        <MenuItem value={4}>{this.props.optionTexts.option4Text}</MenuItem>
+                                        <MenuItem value={3}>{this.props.optionTexts.option3Text}</MenuItem>
+                                        <MenuItem value={2}>{this.props.optionTexts.option2Text}</MenuItem>
+                                        <MenuItem value={1}>{this.props.optionTexts.option1Text}</MenuItem>
+                                    </Select>
+                                    {/* <FormHelperText>{this.props.optionTexts.name}</FormHelperText> */}
+                                </FormControl>
+                                {/* <select name={this.props.optionTexts.name} value={this.props.question} onChange={this.props.handleChange}>
                         <option value="none" disabled hidden>Select a number</option>
                         <option value="5">{this.props.optionTexts.option5Text}</option>
                         <option value="4">{this.props.optionTexts.option4Text}</option>
@@ -53,24 +54,25 @@ class Form extends Component {
                         <option value="2">{this.props.optionTexts.option2Text}</option>
                         <option value="1">{this.props.optionTexts.option1Text}</option>
                     </select> */}
-                            <p>{this.props.optionTexts.tagLine}</p>
-                            <div>
-                                <ButtonGroup
-                                    // variant="contained"
-                                    // color="primary"
-                                    aria-label="full-width contained primary button group"
-                                >
-                                    {this.props.backButtonShow && <Button variant="contained" color="secondary" onClick={() => { this.props.history.push(this.props.backTo) }}>Back</Button>}
-                                    <Button variant="contained" color="primary" type="submit">Next</Button>
-                                </ButtonGroup>
+                                <p>{this.props.optionTexts.tagLine}</p>
+                                <div>
+                                    <ButtonGroup
+                                        // variant="contained"
+                                        // color="primary"
+                                        aria-label="full-width contained primary button group"
+                                    >
+                                        {this.props.backButtonShow && <Button variant="contained" color="secondary" onClick={() => { this.props.history.push(this.props.backTo) }}>Back</Button>}
+                                        <Button variant="contained" color="primary" type="submit">Next</Button>
+                                    </ButtonGroup>
 
-                                {/* {this.props.backButtonShow && <button onClick={() => { this.props.history.push(this.props.backTo) }}>Back</button>}
+                                    {/* {this.props.backButtonShow && <button onClick={() => { this.props.history.push(this.props.backTo) }}>Back</button>}
                         <button type="submit">Next</button> */}
-                            </div>
+                                </div>
 
-                        </form>
-                    </CardContent>
-                </Card>
+                            </form>
+                        </CardContent>
+                    </Card>
+                </div>
             </>
         )
     }

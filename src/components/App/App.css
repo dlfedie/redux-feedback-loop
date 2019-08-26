@@ -25,3 +25,16 @@
 .reviewRows {
   align-content: center;
 }
+
+.cards {
+  /* min-width: 500px; */
+  max-width: 500px;
+  align-content: center;
+}
+
+.centerMe {
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  display: inline-block;
+}

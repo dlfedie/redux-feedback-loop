@@ -49,24 +49,26 @@ class Comments extends Component {
         return (
             <>
                 <h2>Any comments you would like to leave?</h2>
-                <Card>
-                    <CardContent>
-                        {/* {JSON.stringify(this.state)} */}
-                        <form onSubmit={this.setComments}>
-                            <textarea value={this.props.store.newFeedback.comments} onChange={this.handleChange} rows="5" cols="60" />
-                            <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>
-                            <ButtonGroup
-                                aria-label="full-width contained primary button group"
-                            >
-                                <Button variant="contained" color="secondary" onClick={() => { this.props.history.push('/supported') }}>Back</Button>
-                                <Button variant="contained" color="primary" type="submit">Next</Button>
-                            </ButtonGroup>
+                <div className="centerMe">
+                    <Card className="cards">
+                        <CardContent>
+                            {/* {JSON.stringify(this.state)} */}
+                            <form onSubmit={this.setComments}>
+                                <textarea value={this.props.store.newFeedback.comments} onChange={this.handleChange} rows="5" cols="60" />
+                                <p>Comments are optional. You may provide feedback, thank yous, or a simple message.</p>
+                                <ButtonGroup
+                                    aria-label="full-width contained primary button group"
+                                >
+                                    <Button variant="contained" color="secondary" onClick={() => { this.props.history.push('/supported') }}>Back</Button>
+                                    <Button variant="contained" color="primary" type="submit">Next</Button>
+                                </ButtonGroup>
 
-                            {/* <button onClick={() => { this.props.history.push('/supported') }}>Back</button>
+                                {/* <button onClick={() => { this.props.history.push('/supported') }}>Back</button>
                         <button type="submit">Next</button> */}
-                        </form>
-                    </CardContent>
-                </Card>
+                            </form>
+                        </CardContent>
+                    </Card>
+                </div>
             </>
         )
     }
